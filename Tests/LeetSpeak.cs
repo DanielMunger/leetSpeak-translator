@@ -1,5 +1,6 @@
 using Xunit;
 using System;
+using LeetSpeak.Object;
 
 namespace LeetSpeak
 {
@@ -9,10 +10,11 @@ namespace LeetSpeak
     public void _TranslateLeetSpeak_true()
     {
 
-      LeetSpeak newLeetWord = new LeetSpeak("ideas");
-      string testWord = newLeetWord.Translate("ideas");
-      Assert.Equal(true, testWord == "1d3az");
-      
+      LeetSpeakTranslator newLeetWord = new LeetSpeakTranslator("ideas sies");
+      string testWord = newLeetWord.Translate("ideas sies");
+      System.Console.WriteLine("'" + testWord + "'");
+      Assert.Equal(true, testWord == "1d3az s13z");
+
     }
   }
 }

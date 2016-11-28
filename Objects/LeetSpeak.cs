@@ -1,38 +1,50 @@
 using System;
 using System.Collections.Generic;
 
-namespace LeetSpeak
+namespace LeetSpeak.Object
 {
-  public class LeetSpeak
+  public class LeetSpeakTranslator
   {
     private string _inputtedString;
 
-    public LeetSpeak(string InputtedString)
+    public LeetSpeakTranslator(string InputtedString)
     {
       _inputtedString = InputtedString;
     }
 
 
-    public string Translate(string InputtedString)
+    public string Translate(string Input)
     {
-      char[] arrayOfLetters = InputtedString.ToCharArray();
-      for(int i = 0; i < arrayOfLetters.Length; i++)
+      string[] userInput = Input.Split(' ');
+      string result = "";
+      for (int j = 0; j < userInput.Length; j++)
       {
-        if(arrayOfLetters[i] == 'e' || arrayOfLetters[i] == 'E')
+        string word = userInput[j];
+        char[] arrayOfLetters = word.ToCharArray();
+        for(int i = 0; i < arrayOfLetters.Length; i++)
         {
-          arrayOfLetters[i] = '3';
+          if(arrayOfLetters[i] == 'e' || arrayOfLetters[i] == 'E')
+          {
+            arrayOfLetters[i] = '3';
+          }
+          if(arrayOfLetters[i] == 'i')
+          {
+            arrayOfLetters[i] = '1';
+          }
+          if((arrayOfLetters[i] == 's' || arrayOfLetters[i] == 'S') &&  i !=0)
+          {
+            arrayOfLetters[i] = 'z';
+          }
         }
-        if(arrayOfLetters[i] == 'i')
+        if (j != 0 && j < userInput.Length)
         {
-          arrayOfLetters[i] = '1';
+        result += (" " + string.Join("", arrayOfLetters));
         }
-        if((arrayOfLetters[i] == 's' || arrayOfLetters[i] == 'S') &&  i !=0)
+        else
         {
-          arrayOfLetters[i] = 'z';
+        result += string.Join("", arrayOfLetters);
         }
       }
-      string result = string.Join("", arrayOfLetters);
-      System.Console.WriteLine(result);
       return result;
     }
   }

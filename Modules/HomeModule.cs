@@ -1,14 +1,20 @@
 using Nancy;
 using System.Collections.Generic;
+using LeetSpeak.Object;
 
-namespace EnterNamespaceHere //replace with your desired namespace
+namespace LeetSpeak
 {
   public class HomeModule : NancyModule
   {
     public HomeModule()
     {
       Get["/"] = _ => View["index.cshtml"];
-      //Insert your GETs and POSTs here
+      Post["/submit"] = _ => {
+        string userInput = Request.Form["UserInput"];
+        LeetSpeakTranslator translator = new LeetSpeakTranslator(userInput);
+        string translatedInput = translator.Translate(userInput);
+        return View["index.cshtml", translatedInput];
+      };
     }
   }
 }

@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Leet Speak Translator</title>
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
   </head>
   <body>
-
+    <form action="/submit" method="post">
+      <div class="form-group">
+       <label for="UserInput">Enter a word or sentence to be translated into 1337speak</label>
+       <input type="text" class="form-control" name="UserInput" id="UserInput">
+     </div>
+     <button type="submit" name="button">Submit</button>
+    </form>
+    <div id="output">
+      <h3>Translated Sentence:</h3>
+      <span>@Model</span>
+    </div>
   </body>
 </html>
